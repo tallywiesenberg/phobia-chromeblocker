@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, jsonify, render_template, request
 
 from .edits import PageEditor
 
@@ -17,6 +17,6 @@ def create_app():
     def edit(keyword, orientation, site):
         pe = PageEditor(keyword, orientation, site)
         output = pe.edit()
-        return render_template('demo.html', output=output)
+        return jsonify(output)
 
     return app

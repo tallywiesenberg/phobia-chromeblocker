@@ -18,15 +18,14 @@ class PageEditor:
         soup = BeautifulSoup(r, 'html.parser')
 
         #Search through html to find keyword
-        output = ''
-        for i in soup.find_all('p'):
-            output += '------- \n'
+        output = {}
+        for idx, item in enumerate(soup.find_all('p')):
             #Convert paragraph to string
-            p = str(i)
+            p = str(item)
             if self.keyword in p:
-                output += 'Hidden Paragraph!!!'
+                output[idx] = 'Hidden Paragraph!'
             else:
-                output += p
+                output[idx] = p
 
         return output
 
